@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Moni Mia te ayuda a organizar tus ingresos, registrar tus gastos y empezar a ahorrar.">
+  <title>Moni Mia | Organiza tu dinero</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="header" id="inicio">
+    <nav class="navbar container" aria-label="Navegación principal">
+      <a class="logo" href="#inicio" aria-label="Moni Mia, inicio">
+        <span class="logo-icon" aria-hidden="true">◉</span>
+        <span>Moni Mia<small class="logo-tagline">Empieza a entender tu dinero.</small></span>
+      </a>
+
+      <button class="menu-toggle" id="menuToggle" type="button" aria-label="Abrir menú" aria-expanded="false">
+        ☰
+      </button>
+
+      <div class="nav-links" id="navLinks">
+        <a href="#inicio">Inicio</a>
+        <a href="#catalogo">Herramientas</a>
+        <a href="#presupuesto">Mi presupuesto</a>
+        <a href="#gastos">Mis gastos</a>
+        <a href="#meta">Mi meta</a>
+        <a href="#consejos">Consejos</a>
+        <button class="cart-btn" id="cartButton" type="button" aria-label="Abrir resumen de gastos">
+          Resumen <span id="cartCount">0</span>
+        </button>
+      </div>
+    </nav>
+
+    <section class="hero container" aria-labelledby="heroTitle">
+      <div class="hero-content">
+        <p class="eyebrow">INGRESOS → GASTOS → AHORRO → METAS</p>
+        <h1 id="heroTitle">Tu dinero. Tus metas. Tus decisiones.</h1>
+        <p class="hero-text">
+          Aprende a organizar tu dinero, entender tus gastos y empezar a ahorrar de una forma sencilla.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#presupuesto">Crear mi presupuesto</a>
+          <a class="btn btn-secondary" href="#gastos">Ver cómo funciona</a>
+        </div>
+
+        <div class="hero-stats">
+          <div>
+            <strong>01</strong>
+            <span>Organiza tus ingresos</span>
+          </div>
+          <div>
+            <strong>02</strong>
+            <span>Registra tus gastos</span>
+          </div>
+          <div>
+            <strong>03</strong>
+            <span>Define tus metas</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual" aria-hidden="true">
+        <div class="budget-card">
+          <div class="budget-element steam-1">INGRESOS</div>
+          <div class="budget-element steam-2">↓</div>
+          <div class="budget-element steam-3">GASTOS</div>
+          <div class="budget-visual">
+            <div class="budget-icon">$</div>
+            <div class="budget-decoration">↓ AHORRO</div>
+          </div>
+          <div class="budget-base"></div>
+          <p>Tu dinero, paso a paso</p>
+        </div>
+      </div>
+    </section>
+  </header>
+
+  <main>
+    <section class="section about" id="nosotros" aria-labelledby="aboutTitle">
+      <div class="container about-grid">
+        <div class="about-visual" aria-hidden="true">
+          <div class="photo-card photo-main">
+            <span>◎</span>
+            <small>Entiende tus ingresos</small>
+          </div>
+          <div class="photo-card photo-small">
+            <span>↗</span>
+            <small>Avanza a tu ritmo</small>
+          </div>
+        </div>
+
+        <div class="about-copy">
+          <p class="eyebrow">UN PRIMER PASO CON TU DINERO</p>
+          <h2 id="aboutTitle">¿Por qué Moni Mia?</h2>
+          <p>
+            Administrar tu dinero por primera vez puede parecer complicado. Entre gastos diarios, universidad, salidas y pequeños gustos, es fácil perder la cuenta. Moni Mia nace para hacer ese proceso más sencillo.
+          </p>
+          <p>
+            Muchos jóvenes empezamos a recibir o manejar dinero sin que nadie nos enseñe realmente a organizarlo. Moni Mia busca hacer ese primer paso más sencillo, ayudándote a visualizar tus ingresos, registrar tus gastos y establecer una meta de ahorro.
+          </p>
+          <div class="benefits">
+            <div>✓ Mira cuánto dinero recibes</div>
+            <div>✓ Registra en qué lo usas</div>
+            <div>✓ Da forma a una meta posible</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    
+    <section class="section menu-section" id="catalogo">
+       <div class="container">
+         <div class="section-heading">
+          <div>
+            <p class="eyebrow">DESCUBRE LO QUE PUEDES HACER</p>
+            <h2>Todo lo que necesitas para organizar tu dinero</h2>
+            <p>Conoce las herramientas que Moni Mia tiene para ayudarte.</p>
+          </div>
+        </div>
+        
+        <div class="menu-grid">
+          
+          <article class="product-card">
+            <div class="product-icon">💰</div>
+            <span class="tag">Ingresos</span>
+            <h3>Organiza tus ingresos</h3>
+            <p>Registra el dinero que recibes y conoce cuánto tienes disponible.</p>
+            <a href="#presupuesto" class="btn btn-secondary">
+              Comenzar
+            </a>
+          </article>
+          
+          <article class="product-card">
+             <div class="product-icon">🧾</div>
+             <span class="tag">Control</span>
+             <h3>Registra tus gastos</h3>
+             <p>Clasifica tus gastos y descubre en qué utilizas tu dinero.</p>
+             <a href="#registrar-gasto" class="btn btn-secondary">
+              Comenzar
+             </a>
+          </article>
+          
+          <article class="product-card">
+            <div class="product-icon">📊</div>
+            <span class="tag">Análisis</span>
+            <h3>Visualiza tu dinero</h3>
+            <p>Consulta tus ingresos, gastos, ahorros y dinero disponible.</p>
+            <a href="#resumen" class="btn btn-secondary">
+              Comenzar
+            </a>
+          </article>
+          
+          <article class="product-card">
+            <div class="product-icon">🎯</div>
+            <span class="tag">Ahorro</span>
+            <h3>Alcanza tus metas</h3>
+            <p>Establece objetivos de ahorro y haz seguimiento de tu progreso.</p>
+            <a href="#meta" class="btn btn-secondary">
+              Comenzar
+            </a>
+          </article>
+        
+        </div>
+      </div>
+    </section>
+
+
+    <section class="section menu-section" id="gastos" aria-labelledby="budgetTitle">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">TUS GASTOS, A TU MANERA</p>
+            <h2 id="budgetTitle">Organiza tu dinero</h2>
+          </div>
+          <div class="filters" id="filters" aria-label="Filtrar gastos">
+            <button class="filter-btn active" type="button" data-filter="all">Todos</button>
+            <button class="filter-btn" type="button" data-filter="all" data-group="necesidades">Necesidades</button>
+            <button class="filter-btn" type="button" data-filter="all" data-group="personales">Personales</button>
+            <button class="filter-btn" type="button" data-filter="all" data-group="otros">Otros</button>
+          </div>
+        </div>
+
+        <div class="menu-grid" id="menuGrid">
+          <article class="product-card" data-category="alimentacion" data-group="necesidades">
+            <div class="product-icon" aria-hidden="true">🍎</div>
+            <span class="tag">Día a día</span>
+            <h3>Alimentación</h3>
+            <p>Comidas, snacks y compras para preparar tus alimentos.</p>
+            <div class="product-footer">
+              <span></span>
+              <button class="expense-add-btn" type="button" data-category="alimentacion" aria-label="Agregar gasto de alimentación">Agregar gasto</button>
+            </div>
+          </article>
+
+          <article class="product-card" data-category="transporte" data-group="necesidades">
+            <div class="product-icon" aria-hidden="true">🚌</div>
+            <span class="tag">Movilidad</span>
+            <h3>Transporte</h3>
+            <p>Pasajes, viajes y otros gastos para trasladarte.</p>
+            <div class="product-footer">
+              <span></span>
+              <button class="expense-add-btn" type="button" data-category="transporte" aria-label="Agregar gasto de transporte">Agregar gasto</button>
+            </div>
+          </article>
+
+          <article class="product-card" data-category="universidad" data-group="necesidades">
+            <div class="product-icon" aria-hidden="true">📚</div>
+            <span class="tag">Estudios</span>
+            <h3>Universidad</h3>
+            <p>Materiales, copias y gastos relacionados con tus clases.</p>
+            <div class="product-footer">
+              <span></span>
+              <button class="expense-add-btn" type="button" data-category="universidad" aria-label="Agregar gasto de universidad">Agregar gasto</button>
+            </div>
+          </article>
+
+          <article class="product-card" data-category="entretenimiento" data-group="personales">
+            <div class="product-icon" aria-hidden="true">🎟️</div>
+            <span class="tag">Tiempo libre</span>
+            <h3>Entretenimiento</h3>
+            <p>Salidas, actividades y momentos para disfrutar.</p>
+            <div class="product-footer">
+              <span></span>
+              <button class="expense-add-btn" type="button" data-category="entretenimiento" aria-label="Agregar gasto de entretenimiento">Agregar gasto</button>
+            </div>
+          </article>
+
+          <article class="product-card" data-category="compras" data-group="personales">
+            <div class="product-icon" aria-hidden="true">🛍️</div>
+            <span class="tag">Personales</span>
+            <h3>Compras</h3>
+            <p>Ropa, artículos personales y compras ocasionales.</p>
+            <div class="product-footer">
+              <span></span>
+              <button class="expense-add-btn" type="button" data-category="compras" aria-label="Agregar gasto de compras">Agregar gasto</button>
+            </div>
+          </article>
+
+          <article class="product-card" data-category="otros" data-group="otros">
+            <div class="product-icon" aria-hidden="true">＋</div>
+            <span class="tag">Personalizable</span>
+            <h3>Otros</h3>
+            <p>Un espacio para cualquier gasto que no encaje en otra categoría.</p>
+            <div class="product-footer">
+              <span></span>
+              <button class="expense-add-btn" type="button" data-category="otros" aria-label="Agregar otro gasto">Agregar gasto</button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section summary-section" id="resumen" aria-labelledby="summaryTitle">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">UNA VISTA CLARA DE TU DINERO</p>
+            <h2 id="summaryTitle">Mi resumen</h2>
+          </div>
+        </div>
+        <div class="menu-grid summary-grid">
+          <article class="product-card summary-card">
+            <h3>Ingresos</h3>
+            <p>Dinero que recibes.</p>
+            <strong id="summaryIncome">$0.00</strong>
+          </article>
+          <article class="product-card summary-card">
+            <h3>Gastos</h3>
+            <p>Dinero que has utilizado.</p>
+            <strong id="summaryExpenses">$0.00</strong>
+          </article>
+          <article class="product-card summary-card">
+            <h3>Ahorro</h3>
+            <p>Dinero que quieres guardar.</p>
+            <strong id="summarySavings">$0.00</strong>
+          </article>
+          <article class="product-card summary-card">
+            <h3>Disponible</h3>
+            <p>Lo que queda para organizar.</p>
+            <strong id="summaryAvailable">$0.00</strong>
+          </article>
+        </div>
+        <p class="summary-note">Disponible = Ingresos − Gastos − Ahorro</p>
+      </div>
+
+       <!-- Gráfico de gastos -->
+      <div class="container">
+        <section class="expense-chart-section" id="graficoGastos">
+          <h2>¿En qué estoy gastando?</h2>
+          <p>Descubre cómo se distribuye tu dinero.</p>
+
+          <div class="expense-chart-container">
+            <div class="expense-donut" id="expenseDonut">
+              <div class="expense-donut-center">
+                <span>Total gastado</span>
+                <strong id="chartTotal">$0,00</strong>
+              </div>
+            </div>
+
+            <div class="expense-chart-legend" id="expenseLegend">
+              <p>Aún no tienes gastos registrados.</p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section class="section expense-section" id="registrar-gasto" aria-labelledby="expenseTitle">
+      <div class="container contact-grid">
+        <div>
+          <p class="eyebrow">LLEVA EL CONTROL DE TUS GASTOS</p>
+          <h2 id="expenseTitle">Registra un gasto</h2>
+          <p class="contact-copy">Anota cada gasto para saber en qué estás utilizando tu dinero.</p>
+        </div>
+
+        <form class="contact-form expense-form" id="expenseForm">
+          <label for="expenseCategory">Categoría de gasto</label>
+          <select id="expenseCategory" name="expenseCategory">
+            <option value="">Selecciona una categoría</option>
+            <option value="alimentacion">Alimentación</option>
+            <option value="transporte">Transporte</option>
+            <option value="universidad">Universidad</option>
+            <option value="entretenimiento">Entretenimiento</option>
+            <option value="compras">Compras</option>
+            <option value="otros">Otros</option>
+          </select>
+
+          <label for="expenseAmount">Monto del gasto</label>
+          <input type="number" id="expenseAmount" name="expenseAmount" min="0" step="0.01" inputmode="decimal" placeholder="0.00">
+
+          <button type="button" class="btn btn-primary" id="addExpenseButton">Agregar gasto</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="section goal-section" id="meta" aria-labelledby="goalTitle">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">AHORRA PARA ALGO QUE TE ILUSIONE</p>
+            <h2 id="goalTitle">Mi meta de ahorro</h2>
+          </div>
+        </div>
+        <form class="contact-form goal-form" id="goalForm">
+          <label for="goalName">Nombre de la meta</label>
+          <input type="text" id="goalName" name="goalName" placeholder="Por ejemplo, una computadora">
+
+          <label for="goalTarget">Monto objetivo</label>
+          <input type="number" id="goalTarget" name="goalTarget" min="0" step="0.01" inputmode="decimal" placeholder="0.00">
+
+          <label for="goalSaved">Monto ahorrado</label>
+          <input type="number" id="goalSaved" name="goalSaved" min="0" step="0.01" inputmode="decimal" placeholder="0.00">
+
+          <button type="button" class="btn btn-primary" id="createGoalButton">Crear mi meta</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="section quote-section" id="consejos" aria-labelledby="adviceTitle">
+      <div class="container quote-card">
+        <p class="eyebrow">CONSEJOS PARA EMPEZAR</p>
+        <h2 id="adviceTitle">Un pequeño consejo puede cambiar la forma en que manejas tu dinero.</h2>
+        <ul class="advice-list">
+          <li>Registra tus gastos, incluso los pequeños.</li>
+          <li>Antes de comprar, pregúntate si realmente lo necesitas.</li>
+          <li>Define una meta de ahorro que sea realista para ti.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section contact-section" id="presupuesto" aria-labelledby="budgetFormTitle">
+      <div class="container contact-grid">
+        <div>
+          <p class="eyebrow">EMPIEZA CON LO QUE TIENES</p>
+          <h2 id="budgetFormTitle">Empieza tu presupuesto</h2>
+          <p class="contact-copy">
+            Completa la información que quieras tener presente al organizar tu dinero.
+          </p>
+        </div>
+
+        <form class="contact-form" id="contactForm">
+          <label for="name">Nombre</label>
+          <input type="text" id="name" name="name" placeholder="Tu nombre">
+
+          <label for="monthlyIncome">Ingreso mensual</label>
+          <input type="number" id="monthlyIncome" name="monthlyIncome" min="0" step="0.01" inputmode="decimal" placeholder="0.00">
+
+          <button type="button" class="btn btn-primary" id="saveBudgetButton">
+            Guardar mi presupuesto
+          </button>
+          <p id="formMessage" class="form-message" role="status"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+    <section class="contact-section" id="contacto" aria-labelledby="contactTitle">
+    <div class="container">
+      <div class="section-heading">
+        <span class="eyebrow">Estamos para ayudarte</span>
+        <h2 id="contactTitle">Hablemos de tus finanzas</h2>
+        <p>¿Tienes alguna sugerencia o pregunta sobre Moni Mia? Escríbenos.</p>
+      </div>
+
+      <form class="contact-form" id="contactMessageForm">
+        <label for="contactName">Nombre</label>
+        <input
+          type="text"
+          id="contactName"
+          name="nombre"
+          placeholder="Tu nombre"
+          required
+        >
+
+        <label for="contactEmail">Correo electrónico</label>
+        <input
+          type="email"
+          id="contactEmail"
+          name="correo"
+          placeholder="tucorreo@ejemplo.com"
+          required
+        >
+
+        <label for="contactMessage">Mensaje</label>
+        <textarea
+          id="contactMessage"
+          name="mensaje"
+          placeholder="Escribe tu mensaje..."
+          rows="5"
+          required
+        ></textarea>
+
+        <button type="submit" class="btn btn-primary">
+          Enviar mensaje
+        </button>
+
+        <p id="contactMessageStatus" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+   
+  <aside class="cart-panel" id="cartPanel" aria-hidden="true" aria-label="Resumen de gastos">
+    <div class="cart-header">
+      <div>
+        <small>Vista general</small>
+        <h2>Resumen de gastos</h2>
+      </div>
+      <button id="closeCart" type="button" aria-label="Cerrar resumen de gastos">✕</button>
+    </div>
+
+    <div id="cartItems" class="cart-items">
+      <p class="empty-cart">Tus gastos registrados aparecerán aquí.</p>
+    </div>
+
+    <div class="cart-footer">
+      <button class="btn btn-primary" id="clearCart" type="button">Limpiar resumen</button>
+    </div>
+  </aside>
+
+  <div class="overlay" id="overlay"></div>
+
+  <footer class="footer">
+    <div class="container footer-content">
+      <a class="logo" href="#inicio" aria-label="Volver al inicio">
+        <span class="logo-icon" aria-hidden="true">◉</span>
+        <span>Moni Mia</span>
+      </a>
+      <p>© <span id="year"></span> Moni Mia. Una herramienta para empezar a tomar mejores decisiones con tu dinero.</p>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

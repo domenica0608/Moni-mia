@@ -1,0 +1,12 @@
+# Archivos privados
+backend/.env
+backend/atlas-credentials.env
+backend/crearAdmin.js
+
+# Dependencias
+node_modules/
+backend/node_modules/
+
+# Archivos temporales
+*.log
+.DS_Store

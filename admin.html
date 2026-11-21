@@ -1,0 +1,122 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Administración | Moni Mia</title>
+
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+
+<body>
+
+  <!-- PANTALLA DE INICIO DE SESIÓN -->
+  <section id="loginSection">
+    <div class="login-container">
+      <h1>Moni Mia</h1>
+      <p>Panel de administración</p>
+
+      <form id="adminLoginForm">
+        <label for="adminEmail">Correo electrónico</label>
+        <input
+          type="email"
+          id="adminEmail"
+          placeholder="Ingresa tu correo"
+          required
+        >
+
+        <label for="adminPassword">Contraseña</label>
+        <input
+          type="password"
+          id="adminPassword"
+          placeholder="Ingresa tu contraseña"
+          required
+        >
+
+        <button type="submit">Iniciar sesión</button>
+
+        <p id="loginMessage"></p>
+      </form>
+    </div>
+  </section>
+
+  
+<!-- PANEL PRINCIPAL -->
+<section id="adminDashboard" hidden>
+
+  <div class="dashboard-layout">
+
+    <!-- BARRA LATERAL -->
+    <aside class="sidebar">
+
+      <div class="sidebar-brand">
+        <h1>Moni Mia</h1>
+        <p>Administración</p>
+      </div>
+
+      <nav class="sidebar-nav">
+        <a href="#overview" class="active">Inicio</a>
+        <a href="#messages">Mensajes de contacto</a>
+      </nav>
+
+      <button id="logoutButton">Cerrar sesión</button>
+
+    </aside>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="admin-content">
+
+      <header class="dashboard-header">
+        <div>
+          <p class="section-label">PANEL ADMINISTRATIVO</p>
+          <h2>¡Bienvenido!</h2>
+          <p id="adminWelcome"></p>
+        </div>
+      </header>
+
+      <!-- RESUMEN -->
+      <section id="overview" class="summary-section">
+
+        <div class="summary-card">
+          <p>Total de mensajes</p>
+          <h3 id="totalContacts">0</h3>
+          <span>Mensajes recibidos</span>
+        </div>
+
+        <div class="summary-card">
+          <p>Actividad</p>
+          <h3>Moni Mia</h3>
+          <span>Tu espacio de administración</span>
+        </div>
+
+      </section>
+
+      <!-- MENSAJES -->
+      <section id="messages" class="messages-section">
+
+        <div class="messages-heading">
+          <div>
+            <p class="section-label">COMUNICACIÓN</p>
+            <h2>Mensajes de contacto</h2>
+          </div>
+        </div>
+
+        <div id="contactsContainer">
+          <!-- Aquí aparecerán los mensajes de los usuarios -->
+        </div>
+
+      </section>
+
+    </main>
+
+  </div>
+
+</section>
+
+
+
+  <script src="js/admin.js"></script>
+
+</body>
+</html>
