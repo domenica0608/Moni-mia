@@ -6,18 +6,21 @@ const contactoSchema = new mongoose.Schema(
     nombre: {
       type: String,
       required: true,
-      trim: true
+      trim: true,
+      maxlength: 80
     },
     correo: {
       type: String,
       required: true,
       trim: true,
-      lowercase: true
+      lowercase: true,
+      maxlength: 254
     },
     mensaje: {
       type: String,
       required: true,
-      trim: true
+      trim: true,
+      maxlength: 1000
     }
   },
   {
