@@ -1,6 +1,6 @@
 
 // CONEXIÓN CON EL BACKEND DE MONI MIA
-const API_URL = "http://localhost:3000";
+const API_URL = "https://moni-mia-backend.onrender.com";
 
 // ELEMENTOS DEL HTML
 const loginSection = document.getElementById("loginSection");

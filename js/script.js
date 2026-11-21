@@ -108,7 +108,7 @@ async function sendContactMessage(event) {
   status.textContent = "Enviando tu mensaje...";
 
   try {
-    const response = await fetch("http://localhost:3000/api/contactos", {
+    const response = await fetch("https://moni-mia-backend.onrender.com/api/contactos", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
