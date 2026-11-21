@@ -217,9 +217,10 @@ app.post("/api/ia/asistente", async (req, res) => {
 
     const { pregunta } = req.body;
 
-    if (typeof pregunta !== "string" || !pregunta.trim()) {
+    const preguntaLimpia = pregunta.trim();
+    if (preguntaLimpia.length > 1000) {
       return res.status(400).json({
-        mensaje: "Escribe una pregunta para el asistente."
+        mensaje: "Tu pregunta no puede superar los 1000 caracteres."
       });
     }
 
@@ -257,7 +258,7 @@ app.post("/api/ia/asistente", async (req, res) => {
         },
         {
           role: "user",
-          content: pregunta.trim()
+          content: preguntaLimpia
         }
       ],
       temperature: 0.7,
