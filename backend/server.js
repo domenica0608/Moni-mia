@@ -9,6 +9,7 @@ const Administrador = require("./models/administrador");
 const bcrypt = require("bcryptjs"); //Protege y verifica contraseñas
 const jwt = require("jsonwebtoken"); // Genera tokens de autenticación para los administradores
 const { GoogleGenAI } = require("@google/genai");
+const Groq = require("groq-sdk");
 require("dotenv").config();
 
 //MIDDLEWARE PARA PROTEGER LAS RUTAS ADMINISTRATIVAS
@@ -18,6 +19,10 @@ const app = express();
 // CONFIGURACIÓN DE GEMINI
 const genAI = process.env.GEMINI_API_KEY
   ? new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY })
+  : null;
+  // CONFIGURACIÓN DE GROQ
+const groq = process.env.GROQ_API_KEY
+  ? new Groq({ apiKey: process.env.GROQ_API_KEY })
   : null;
 const PORT = process.env.PORT || 3000;
 
@@ -201,9 +206,10 @@ app.post("/api/contactos", async (req, res) => {
 
 
 // ASISTENTE FINANCIERO CON INTELIGENCIA ARTIFICIAL
+
 app.post("/api/ia/asistente", async (req, res) => {
   try {
-    if (!genAI) {
+    if (!groq) {
       return res.status(503).json({
         mensaje: "El asistente financiero no está configurado."
       });
@@ -223,29 +229,43 @@ app.post("/api/ia/asistente", async (req, res) => {
       });
     }
 
-    const respuesta = await genAI.models.generateContent({
-      model: "gemini-3.8-flash",
-      contents: pregunta.trim(),
-      config: {
-        systemInstruction: `
-          Eres Moni Mia, un asistente especializado en finanzas personales.
-          Tu objetivo es ayudar principalmente a jóvenes y estudiantes
-          a organizar sus ingresos, controlar sus gastos, ahorrar y
-          desarrollar buenos hábitos financieros.
+    const respuesta = await groq.chat.completions.create({
+      model: "openai/gpt-oss-20b",
+      messages: [
+        {
+          role: "system",
+          content: `
+            Eres Moni Mia, un asistente especializado en finanzas personales.
+            Tu objetivo es ayudar principalmente a jóvenes y estudiantes
+            a organizar sus ingresos, controlar sus gastos, ahorrar y
+            desarrollar buenos hábitos financieros.
 
-          Responde siempre en español, con palabras sencillas,
-          de manera amable, clara y práctica.
+            Responde siempre en español, con palabras sencillas,
+            de manera amable, clara y práctica.
 
-          Ofrece consejos realistas y ejemplos fáciles de entender.
-          No inventes datos financieros ni prometas resultados.
-          No solicites contraseñas, números de tarjetas ni datos bancarios.
-          No reemplaces el asesoramiento de un profesional financiero.
-        `
-      }
+            Ofrece consejos realistas y ejemplos fáciles de entender.
+            No inventes datos financieros ni prometas resultados.
+            No solicites contraseñas, números de tarjetas ni datos bancarios.
+            No reemplaces el asesoramiento de un profesional financiero.
+
+            Responde considerando que el público está en Ecuador.
+            Utiliza dólares estadounidenses (USD) en los ejemplos.
+            Evita recomendar aplicaciones o servicios sin comprobar
+            que estén disponibles en Ecuador.
+            Procura que las respuestas sean claras, prácticas y no demasiado largas.
+          `
+        },
+        {
+          role: "user",
+          content: pregunta.trim()
+        }
+      ],
+      temperature: 0.7,
+      max_tokens: 1200
     });
 
     return res.status(200).json({
-      respuesta: respuesta.text
+      respuesta: respuesta.choices[0].message.content
     });
 
   } catch (error) {
