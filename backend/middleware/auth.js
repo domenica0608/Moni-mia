@@ -17,9 +17,15 @@ function verificarToken(req, res, next) {
     }
 
     const token = encabezado.split(" ")[1];
-
-    // Comprobar que el token sea válido
-    const datosAdministrador = jwt.verify(
+    // Verificar que exista la clave secreta  
+    if (!process.env.JWT_SECRET) {
+      return res.status(500).json({
+        mensaje: "La configuración de seguridad no está disponible."
+      });
+    }
+    
+    // Comprobar que el token sea válido  
+     const datosAdministrador = jwt.verify(
       token,
       process.env.JWT_SECRET
     );
