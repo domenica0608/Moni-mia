@@ -328,9 +328,16 @@ function updateGoalProgress() {
         alert("Ingresa un monto mayor que cero.");
         return;
       }
-
+      
+      const restante = Number(budget.goal.target) - Number(budget.goal.saved);
+      
+      if (amount > restante) {
+        alert(`Solo necesitas ${formatMoney(restante)} para completar tu meta.`);
+        return;
+      }
+      
       budget.goal.saved = (Number(budget.goal.saved) || 0) + amount;
-
+      
       saveData();
       updatePage();
 
