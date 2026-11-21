@@ -393,6 +393,22 @@ function connectEvents() {
     "submit",
     sendContactMessage
   );
+  // Conectar el asistente financiero
+  document.getElementById("aiChatForm").addEventListener(
+    "submit",
+    sendAIMessage
+  );
+  // Abrir y cerrar el chatbot
+document.getElementById("aiChatToggle").addEventListener("click", () => {
+  document.getElementById("aiChatPanel").classList.add("open");
+  document.getElementById("aiChatToggle").style.display = "none";
+  document.getElementById("aiChatInput").focus();
+});
+
+document.getElementById("aiChatClose").addEventListener("click", () => {
+  document.getElementById("aiChatPanel").classList.remove("open");
+  document.getElementById("aiChatToggle").style.display = "block";
+});
   document.getElementById("saveBudgetButton").addEventListener("click", saveBudgetForm);
 
   document.getElementById("contactForm").addEventListener("submit", (event) => {
@@ -583,3 +599,60 @@ document.addEventListener("DOMContentLoaded", () => {
   updatePage();
 });
 
+
+
+// ASISTENTE FINANCIERO DE MONI MIA
+
+async function sendAIMessage(event) {
+  event.preventDefault();
+
+  const input = document.getElementById("aiChatInput");
+  const messages = document.getElementById("aiChatMessages");
+  const button = document.getElementById("aiChatSend");
+
+  const pregunta = input.value.trim();
+
+  if (!pregunta) return;
+
+  // Mostrar la pregunta del usuario
+  const userMessage = document.createElement("p");
+  userMessage.className = "ai-user-message";
+  userMessage.textContent = pregunta;
+  messages.appendChild(userMessage);
+
+  input.value = "";
+  button.disabled = true;
+
+  const loadingMessage = document.createElement("p");
+  loadingMessage.textContent = "Moni Mia está pensando...";
+  messages.appendChild(loadingMessage);
+
+  try {
+    const response = await fetch(
+      "https://moni-mia-backend.onrender.com/api/ia/asistente",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ pregunta })
+      }
+    );
+
+    const resultado = await response.json();
+
+    if (!response.ok) {
+      throw new Error(resultado.mensaje || "No se pudo obtener una respuesta.");
+    }
+
+    loadingMessage.textContent = resultado.respuesta;
+
+  } catch (error) {
+    console.error("Error en el asistente:", error);
+    loadingMessage.textContent =
+      "No pude responder en este momento. Inténtalo nuevamente.";
+  } finally {
+    button.disabled = false;
+    input.focus();
+  }
+}

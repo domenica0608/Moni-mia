@@ -473,6 +473,39 @@
     </div>
   </footer>
 
-  <script src="js/script.js"></script>
+
+<!-- CHATBOT FINANCIERO MONI MIA -->
+<button id="aiChatToggle" class="ai-chat-toggle" type="button">
+  💬
+</button>
+
+<section id="aiChatPanel" class="ai-chat-panel" aria-label="Asistente financiero">
+  <div class="ai-chat-header">
+    <div>
+      <h3>Moni Mia</h3>
+      <p>Tu asistente financiero</p>
+    </div>
+    <button id="aiChatClose" type="button" aria-label="Cerrar chat">×</button>
+  </div>
+
+  <div id="aiChatMessages" class="ai-chat-messages" aria-live="polite">
+    <p class="ai-bot-message">
+      ¡Hola! Soy Moni Mia. 💗 ¿En qué puedo ayudarte a organizar tu dinero?
+    </p>
+  </div>
+
+  <form id="aiChatForm" class="ai-chat-form">
+    <input
+      type="text"
+      id="aiChatInput"
+      placeholder="Escribe tu pregunta..."
+      maxlength="1000"
+      required
+    >
+    <button type="submit" id="aiChatSend">Enviar</button>
+  </form>
+</section>
+
+<script src="js/script.js"></script>
 </body>
 </html>

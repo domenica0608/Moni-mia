@@ -8,12 +8,17 @@ const Administrador = require("./models/administrador");
 // HERRAMIENTAS DE SEGURIDAD
 const bcrypt = require("bcryptjs"); //Protege y verifica contraseñas
 const jwt = require("jsonwebtoken"); // Genera tokens de autenticación para los administradores
+const { GoogleGenAI } = require("@google/genai");
 require("dotenv").config();
 
 //MIDDLEWARE PARA PROTEGER LAS RUTAS ADMINISTRATIVAS
 const verificarToken = require("./middleware/auth");
 
 const app = express();
+// CONFIGURACIÓN DE GEMINI
+const genAI = process.env.GEMINI_API_KEY
+  ? new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY })
+  : null;
 const PORT = process.env.PORT || 3000;
 
 // Configuración del servidor
@@ -193,6 +198,65 @@ app.post("/api/contactos", async (req, res) => {
     });
   }
 });
+
+
+// ASISTENTE FINANCIERO CON INTELIGENCIA ARTIFICIAL
+app.post("/api/ia/asistente", async (req, res) => {
+  try {
+    if (!genAI) {
+      return res.status(503).json({
+        mensaje: "El asistente financiero no está configurado."
+      });
+    }
+
+    const { pregunta } = req.body;
+
+    if (typeof pregunta !== "string" || !pregunta.trim()) {
+      return res.status(400).json({
+        mensaje: "Escribe una pregunta para el asistente."
+      });
+    }
+
+    if (pregunta.length > 1000) {
+      return res.status(400).json({
+        mensaje: "Tu pregunta no puede superar los 1000 caracteres."
+      });
+    }
+
+    const respuesta = await genAI.models.generateContent({
+      model: "gemini-3.8-flash",
+      contents: pregunta.trim(),
+      config: {
+        systemInstruction: `
+          Eres Moni Mia, un asistente especializado en finanzas personales.
+          Tu objetivo es ayudar principalmente a jóvenes y estudiantes
+          a organizar sus ingresos, controlar sus gastos, ahorrar y
+          desarrollar buenos hábitos financieros.
+
+          Responde siempre en español, con palabras sencillas,
+          de manera amable, clara y práctica.
+
+          Ofrece consejos realistas y ejemplos fáciles de entender.
+          No inventes datos financieros ni prometas resultados.
+          No solicites contraseñas, números de tarjetas ni datos bancarios.
+          No reemplaces el asesoramiento de un profesional financiero.
+        `
+      }
+    });
+
+    return res.status(200).json({
+      respuesta: respuesta.text
+    });
+
+  } catch (error) {
+    console.error("Error en el asistente financiero:", error.message);
+
+    return res.status(500).json({
+      mensaje: "No pudimos generar una respuesta. Inténtalo nuevamente."
+    });
+  }
+});
+
 
 // Conectar a MongoDB e iniciar el servidor
 async function iniciarServidor() {

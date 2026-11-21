@@ -1545,3 +1545,152 @@ blockquote {
     width: 100%;
   }
 }
+
+
+
+/* =================================
+   CHATBOT FINANCIERO MONI MIA
+================================= */
+
+.ai-chat-toggle {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  width: 60px;
+  height: 60px;
+  border: none;
+  border-radius: 50%;
+  background: #355C4A;
+  color: white;
+  font-size: 27px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+.ai-chat-toggle:hover {
+  background: #8FAF9A;
+}
+
+.ai-chat-panel {
+  display: none;
+  position: fixed;
+  bottom: 100px;
+  right: 25px;
+  width: 350px;
+  max-width: calc(100vw - 30px);
+  height: 450px;
+  max-height: calc(100vh - 130px);
+  background: #FAF8F3;
+  border-radius: 18px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  z-index: 1000;
+  flex-direction: column;
+}
+
+.ai-chat-panel.open {
+  display: flex;
+}
+
+.ai-chat-header {
+  background: #355C4A;
+  color: white;
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ai-chat-header h3 {
+  margin: 0;
+  font-family: "Playfair Display", serif;
+}
+
+.ai-chat-header p {
+  margin: 4px 0 0;
+  font-size: 13px;
+}
+
+.ai-chat-header button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 26px;
+  cursor: pointer;
+}
+
+.ai-chat-messages {
+  flex: 1;
+  padding: 15px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ai-chat-messages p {
+  padding: 11px 13px;
+  border-radius: 12px;
+  max-width: 85%;
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+  white-space: pre-wrap;
+}
+
+.ai-bot-message {
+  background: #F7E7EA;
+  color: #333;
+  align-self: flex-start;
+}
+
+.ai-user-message {
+  background: #8FAF9A;
+  color: white;
+  align-self: flex-end;
+}
+
+.ai-chat-form {
+  display: flex;
+  gap: 8px;
+  padding: 12px;
+  border-top: 1px solid #e5e5e5;
+  background: white;
+}
+
+.ai-chat-form input {
+  flex: 1;
+  min-width: 0;
+  padding: 11px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  outline: none;
+}
+
+.ai-chat-form button {
+  border: none;
+  border-radius: 20px;
+  padding: 10px 15px;
+  background: #355C4A;
+  color: white;
+  cursor: pointer;
+}
+
+.ai-chat-form button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+@media (max-width: 480px) {
+  .ai-chat-panel {
+    right: 15px;
+    bottom: 90px;
+    width: calc(100vw - 30px);
+  }
+
+  .ai-chat-toggle {
+    right: 15px;
+    bottom: 15px;
+  }
+}
