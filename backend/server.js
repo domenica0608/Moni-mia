@@ -118,11 +118,14 @@ app.post("/api/admin/login", async (req, res) => {
 
 // Ruta para comprobar el estado del servidor y la base de datos
 app.get("/api/health", (req, res) => {
-  res.json({
-    mensaje: "El backend de Moni Mia funciona",
+  const dbConectada = mongoose.connection.readyState === 1;
+
+  res.status(dbConectada ? 200 : 503).json({
+    mensaje: dbConectada
+      ? "El backend de Moni Mia funciona"
+      : "La base de datos no está disponible",
     servidor: "activo",
-    baseDeDatos:
-      mongoose.connection.readyState === 1 ? "conectada" : "desconectada"
+    baseDeDatos: dbConectada ? "conectada" : "desconectada"
   });
 });
 
